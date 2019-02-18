@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="wrapper">
+    <h1>Log in</h1>
+    <h3>Log in to your account. Or new user <a href="{{ url_for('auth.signup') }}">Sign Up</a></h3>
+    <form action="/login", method="POST">
+        <p>
+            <label for="">Username</label>
+            <input type="username" name="username">
+        </p>
+        <p>
+            <label for="">Password</label>
+            <input type="password" name="password">
+        </p>
+        <p>
+            <button>login</button>
+        </p>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ messages[0] }}
+        </div>
+        {% endif %}
+        {% endwith %}
+    </form>
+</div>
+{% endblock %}

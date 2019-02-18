@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sign in / Sign up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/all.css') }}">
+</head>
+
+<body>
+
+    <header>
+        <ul>
+            {% if not current_user.is_authenticated %}
+            <li><a href="{{ url_for('auth.login') }}">Log in</a>
+            <li><a href="{{ url_for('auth.signup') }}">Sign up</a>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+            <li><a href="{{ url_for('auth.logout') }}">Logout</a>
+            {% endif %}
+        </ul>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+    </footer>
+
+</body>
+
+</html>
